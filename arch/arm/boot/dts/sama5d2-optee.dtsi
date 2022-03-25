@@ -395,6 +395,8 @@
 
 &i2s0 {
 	clocks = <&scmi0_clock AT91_SCMI_CLK_PERIPH_I2S0_CLK &scmi0_clock AT91_SCMI_CLK_GCK_I2S0_GCLK>;
+	/delete-property/assigned-clocks;
+	/delete-property/assigned-clock-parents;
 };
 
 &i2s1 {
