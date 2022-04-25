@@ -59,6 +59,7 @@
 			bus-width = <4>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&pinctrl_sdmmc1_default>;
+			non-removable;			
 			status = "okay"; /* conflict with qspi0 */
 		};
 
@@ -142,8 +143,7 @@
 					};
 
 					conf-ck_cd {
-						pinmux = <PIN_PA22__SDMMC1_CK>,
-							 <PIN_PA30__SDMMC1_CD>;
+						pinmux = <PIN_PA22__SDMMC1_CK>;
 						bias-disable;
 					};
 				};
