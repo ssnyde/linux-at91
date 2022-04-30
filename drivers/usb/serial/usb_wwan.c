@@ -476,6 +476,13 @@ static struct urb *usb_wwan_setup_urb(struct usb_serial_port *port,
 			  usb_sndbulkpipe(serial->dev, endpoint) | dir,
 			  buf, len, callback, ctx);
 
+	// Add based on Quectel LTE & 5G Linux USB Driver User Guide V2.0
+	if (dir == USB_DIR_OUT) {
+	  struct usb_device_descriptor *desc = &serial->dev->descriptor;
+	  if (desc->idVendor == cpu_to_le16(0x2C7C))
+	    urb->transfer_flags |= URB_ZERO_PACKET;
+	}
+	
 	if (intfdata->use_zlp && dir == USB_DIR_OUT)
 		urb->transfer_flags |= URB_ZERO_PACKET;
 
