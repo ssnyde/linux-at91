@@ -17,7 +17,6 @@ CONFIG_ZBOOT_ROM_TEXT=0x0
 CONFIG_ZBOOT_ROM_BSS=0x0
 CONFIG_ARM_APPENDED_DTB=y
 CONFIG_CMDLINE="mem=256M console=ttyS0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rw rootwait consoleblank=0 net.ifnames=0"
-CONFIG_CMDLINE_FORCE=y
 CONFIG_KEXEC=y
 CONFIG_VFP=y
 CONFIG_NEON=y
