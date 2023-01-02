@@ -97,6 +97,21 @@
 				status = "okay";
 			};
 
+			flx0: flexcom@f8034000 {
+				atmel,flexcom-mode = <1>;
+				status = "okay";
+				usart@200 {
+					compatible = "atmel,at91sam9260-usart";
+					reg = <0x200 0x200>;
+					interrupts = <19 IRQ_TYPE_LEVEL_HIGH 7>;
+					pinctrl-names = "default";
+					pinctrl-0 = <&pinctrl_flx0_default>;
+					clocks = <&pmc PMC_TYPE_PERIPHERAL 19>;
+					clock-names = "usart";
+					status = "okay";
+				};
+			};
+
 			shdwc@f8048010 {
 				atmel,shdwc-debouncer = <976>;
 				atmel,wakeup-rtc-timer;
@@ -152,6 +167,14 @@
 				pinctrl_uart1_default: uart1_default {
 					pinmux = <PIN_PD2__URXD1>,
 						 <PIN_PD3__UTXD1>;
+					bias-disable;
+				};
+
+				pinctrl_flx0_default: flx0_default {
+					pinmux = <PIN_PB28__FLEXCOM0_IO0>,
+						 <PIN_PB29__FLEXCOM0_IO1>,
+						 <PIN_PB31__FLEXCOM0_IO3>,
+						 <PIN_PC0__FLEXCOM0_IO4>;
 					bias-disable;
 				};
 
